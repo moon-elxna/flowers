@@ -71,9 +71,10 @@ function share_url(){
 }
 
 function read_url(){
+
     console.log("url was read")
     //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
-    function get_params(id){
+    function get_params(id, params){
         console.log("hi");
         const counter = counters[id];
         if (params.has(id)){
@@ -90,7 +91,7 @@ function read_url(){
     }
     //grab parameters from the url, URLSearchParams = helper object for query parameters, windows = browser window, location = current page url, search = url after "?" 
     const params = new URLSearchParams(window.location.search);
-    get_params("flower");
-    get_params("stem");
-    get_params("decor");
+    get_params("flower",params);
+    get_params("stem", params);
+    get_params("decor", params);
 }
