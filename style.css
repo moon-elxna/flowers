@@ -53,7 +53,7 @@ img.building {
 #stem { z-index: 10; }
 img.btn {
     width: 48px;
-    height: 48px;
+    height: auto;
 }
 
 /*---btn---*/
@@ -72,4 +72,33 @@ button.tool:hover {
 
 button.tool:active {
     background-color: #ffffff;
+}
+
+canvas{
+    width: 250px;
+}
+
+@media(max-width: 700px){
+    div#content {
+    display: flex;
+    flex-direction: row; 
+    gap: 5px;
+    border-radius: 4px;
+    background-color:#fffafb;
+    max-width: min-content;
+    margin: auto;
+    padding: 16px 32px;
+    }
+     div#header{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    } 
+    div#builder{
+    width: 150px;       ;     
+    }
+    img.building {
+    width: 150px;
+    }
+
 }
