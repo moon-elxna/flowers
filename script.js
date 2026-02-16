@@ -60,8 +60,6 @@ function share_url(){
 }
 
 function read_url(){
-
-    console.log("url was read")
     //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
     function get_params(id, params){
         console.log("hi");
@@ -77,6 +75,9 @@ function read_url(){
             }
             document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
         }
+        else  {
+            counter.current = 1;
+        }
     }
     //grab parameters from the url, URLSearchParams = helper object for query parameters, windows = browser window, location = current page url, search = url after "?" 
     const params = new URLSearchParams(window.location.search);
@@ -87,8 +88,8 @@ function read_url(){
 
 //main
 const counters = {
-    flower: { current: 1, max: 5 },
-    stem: { current: 1, max: 5 },
-    decor: { current: 1, max: 4 }
+    flower: { current, max: 5 },
+    stem: { current, max: 5 },
+    decor: { current, max: 4 }
 }
 read_url();
