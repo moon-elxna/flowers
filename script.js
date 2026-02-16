@@ -7,7 +7,7 @@ const counters = {
 read_url();
 
 //functions
-function change_img(id, direction){
+function change_img(id, flag){
     function decrease_counter(counter){
         if(counter.current == 1){
                 counter.current = counter.max;
@@ -23,10 +23,10 @@ function change_img(id, direction){
             }
     }
     const counter = counters[id];
-    if(direction == true){ 
+    if(flag == true){ 
         increase_counter(counter);
     } 
-    else if(direction == false){
+    else if(flag == false){
         decrease_counter(counter);
     }   
     document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
