@@ -1,11 +1,3 @@
-//main
-const counters = {
-    flower: { current: 1, max: 5 },
-    stem: { current: 1, max: 5 },
-    decor: { current: 1, max: 4 }
-}
-read_url();
-
 //functions
 function change_img(id, flag){
     function decrease_counter(counter){
@@ -95,3 +87,11 @@ function read_url(){
     get_params("stem", params);
     get_params("decor", params);
 }
+
+//main
+const counters = {
+    flower: { current: 1, max: 5 },
+    stem: { current: 1, max: 5 },
+    decor: { current: 1, max: 4 }
+}
+read_url();
