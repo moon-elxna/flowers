@@ -4,6 +4,7 @@ const counters = {
     stem: { current: 1, max: 5 },
     decor: { current: 1, max: 4 }
 }
+read_url();
 
 //functions
 function change_img(id, direction){
