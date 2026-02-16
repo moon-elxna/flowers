@@ -1,4 +1,8 @@
 /*--div---*/
+@font-face {
+    font-family: Pixe;
+    src: url();
+}
 body{
     background-color: #ffe9ef;
     font-family: Arial, Helvetica, sans-serif;
