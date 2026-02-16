@@ -6,7 +6,38 @@ const counters = {
     decor: { current:0 , max: 4, img: null }
 }
 read_url();
+
 //functions
+async function redraw_img(){
+    //asynch function to redraw img
+    //function to loaf part of the img
+    function load_img(id){
+        const counter = counters[id];
+        return new Promise(resolve => { //starts the Promise, waits until the resolved to finish function
+            let img  = new Image();
+            img.src = "img/" + id + "/" + counter.current + ".PNG";
+            img.onload = () => {
+                counter.img = img;
+                resolve(); //returns, that Prommise is resolved ,"layer is finished"
+            };
+        });
+    }
+    //function to draw part of the img
+    function draw_img(img){
+        ctx.drawImage(img,0,0);
+    }
+   
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //await = waits until the fuction is finished, before excuting the next one
+    await load_img("stem");
+    await load_img("decor");
+    await load_img("flower");
+    draw_img(counters.stem.img);
+    draw_img(counters.decor.img);
+    draw_img(counters.flower.img);
+    write_local_storage();
+}
+
 function change_img(id, flag){
     function decrease_counter(counter){
         if(counter.current == 1){
@@ -28,9 +59,9 @@ function change_img(id, flag){
     } 
     else if(flag == false){
         decrease_counter(counter);
-    } 
+    }
     redraw_img(id);
-   // document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
+    //document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
 }
 
 function download_img(){
@@ -94,34 +125,13 @@ function read_url(){
     redraw_img();
     
 }
-function drawImage(img){
-        ctx.drawImage(img,0,0);
+
+function read_local_storage(){
+    if(localStorage.getItem("canvas_item") != null){
+        document.getElementById("canvas").canvas =localStorage.getItem("canvas_item")
+    }
 }
 
-//asynch function to redraw img
-async function redraw_img(){
-    //function to draw part of the img
-    function load_img(id){
-        const counter = counters[id];
-        return new Promise(resolve => { //starts the Promise, waits until the resolved to finish function
-            let img  = new Image();
-            img.src = "img/" + id + "/" + counter.current + ".PNG";
-            img.onload = () => {
-                counter.img = img;
-                resolve(); //returns, that Prommise is resolved ,"layer is finished"
-            };
-        });
-    }
-    function draw_img(img){
-        ctx.drawImage(img,0,0);
-    }
-   
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //await = waits until the fuction is finished, before excuting the next one
-    await load_img("stem");
-    await load_img("decor");
-    await load_img("flower");
-    draw_img(counters.stem.img);
-    draw_img(counters.decor.img);
-    draw_img(counters.flower.img);
+function write_local_storage(){
+    localStorage.setItem("canvas_item", document.getElementById("canvas").canvas)
 }
