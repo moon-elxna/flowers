@@ -5,9 +5,7 @@
 }
 body{
     background-color: #ffe9ef;
-    font-family: "pixellari";
-    font-size: 24px;
-    font-weight: bold;
+    font-family: "pixellari";;
     color: #000d18;
 }
 div#content {
@@ -28,6 +26,10 @@ div#header{
     justify-content: space-between;
     align-items: center;
 }
+div#title{
+    font-weight: bold;
+    font-size: 36px
+}
 div#builder{
     position: relative;
     width: 250px;       
@@ -42,6 +44,7 @@ div.btn{
 }
 
 /*---img---*/
+/*
 img.building {
     position: absolute;
     top: 0px;
@@ -51,6 +54,7 @@ img.building {
 #decor { z-index: 20; }
 #flower { z-index: 30; }
 #stem { z-index: 10; }
+*/
 img.btn {
     width: 48px;
     height: auto;
@@ -65,13 +69,13 @@ button {
     border: none;
     outline: none;
 }
-
-button.tool:hover {
-    box-shadow: 0 4px 12px #ffffff;
+button.tool{
+    background: #fffafb;
+    padding: 6px;
 }
 
 button.tool:active {
-    background-color: #ffffff;
+    background-color: #ffe9ef;
 }
 
 canvas{
@@ -89,7 +93,7 @@ canvas{
     margin: auto;
     padding: 16px 32px;
     }
-     div#header{
+    div#header{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

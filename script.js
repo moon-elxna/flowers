@@ -1,12 +1,13 @@
 //main
 const ctx = document.getElementById("canvas").getContext("2d");
 const counters = {
-    flower: { current: 0, max: 5, img: null },
-    stem: { current: 0 , max: 5, img: null },
-    decor: { current:0 , max: 4, img: null }
+    flower: { current: 1, max: 5, img: null },
+    stem: { current: 1, max: 5, img: null },
+    decor: { current: 1 , max: 4, img: null }
 }
-read_url();
+//read_url();
 
+read_url();
 //functions
 async function redraw_img(){
     //asynch function to redraw img
@@ -87,6 +88,7 @@ function download_img(){
     link.download = "ur_flower.png"
     //download starten
     link.click();
+    alert("Downloaded as PNG!");
 }
 
 function share_url(){
@@ -95,8 +97,8 @@ function share_url(){
         counters.stem.current + "&decor=" + counters.decor.current;
     let text = "Check out my flower creation and build yours next!"
     //write the string to the clipboard
-    navigator.clipboard.writeText(text + " " + url);
     navigator.clipboard.writeText(url);
+    alert("Link copied to clipboard!");
 }
 
 function read_url(){
@@ -111,10 +113,10 @@ function read_url(){
             }
             else{
                 counter.current = val
-            }   
+            }     
         }
-        else  {
-            counter.current = 1;
+        else {
+            read_local_storage();
         }
     }
     //grab parameters from the url, URLSearchParams = helper object for query parameters, windows = browser window, location = current page url, search = url after "?" 
@@ -127,11 +129,25 @@ function read_url(){
 }
 
 function read_local_storage(){
-    if(localStorage.getItem("canvas_item") != null){
-        document.getElementById("canvas").canvas =localStorage.getItem("canvas_item")
+
+    function get_item(id){
+        const counter = counters[id];
+        let test = parseInt(localStorage.getItem(id));
+        if(test != null || test <= counter.max || test > 0){
+            counter.current = test; 
+        }
     }
+    get_item("flower"); 
+    get_item("stem"); 
+    get_item("decor");
 }
 
 function write_local_storage(){
-    localStorage.setItem("canvas_item", document.getElementById("canvas").canvas)
+    function set_item(id){
+        const counter = counters[id];
+        localStorage.setItem(id, counter.current);
+    }
+    set_item("flower"); 
+    set_item("stem"); 
+    set_item("decor");
 }
