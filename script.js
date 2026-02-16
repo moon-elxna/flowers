@@ -1,11 +1,10 @@
 //main
 const ctx = document.getElementById("canvas").getContext("2d");
 const counters = {
-    flower: { current: 0, max: 5 },
-    stem: { current: 0 , max: 5 },
-    decor: { current:0 , max: 4 }
+    flower: { current: 0, max: 5, img: null },
+    stem: { current: 0 , max: 5, img: null },
+    decor: { current:0 , max: 4, img: null }
 }
-
 read_url();
 //functions
 function change_img(id, flag){
@@ -48,9 +47,9 @@ function download_img(){
     //Bilder übereinader zeichen, 0,0 = oben-links Position
     ctx.drawImage(stem_img,0,0);
     ctx.drawImage(decor_img,0,0);
-    ctx.drawImage(flower_img,0,0);
+    ctx.drawImage(flower_img,0,0);*/
     //download link erstellen
-    const link = document.createElement("a"); */
+    const link = document.createElement("a"); 
     // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
     link.href = canvas.toDataURL("image/png");
     //Dateiname setzen, 
@@ -95,24 +94,34 @@ function read_url(){
     redraw_img();
     
 }
+function drawImage(img){
+        ctx.drawImage(img,0,0);
+}
 
 //asynch function to redraw img
 async function redraw_img(){
     //function to draw part of the img
-    function draw_img(id){
+    function load_img(id){
         const counter = counters[id];
         return new Promise(resolve => { //starts the Promise, waits until the resolved to finish function
             let img  = new Image();
             img.src = "img/" + id + "/" + counter.current + ".PNG";
             img.onload = () => {
-                ctx.drawImage(img,0,0);
+                counter.img = img;
                 resolve(); //returns, that Prommise is resolved ,"layer is finished"
             };
         });
     }
+    function draw_img(img){
+        ctx.drawImage(img,0,0);
+    }
+   
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //await = waits until the fuction is finished, before excuting the next one
-    await draw_img("stem");
-    await draw_img("decor");
-    await draw_img("flower");
+    await load_img("stem");
+    await load_img("decor");
+    await load_img("flower");
+    draw_img(counters.stem.img);
+    draw_img(counters.decor.img);
+    draw_img(counters.flower.img);
 }
