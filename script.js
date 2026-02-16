@@ -71,13 +71,15 @@ function share_url(){
 }
 
 function read_url(){
+    console.log("url was read")
     //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
     function get_params(id){
+        console.log("hi");
         const counter = counters[id];
         if (params.has(id)){
             let val = parseInt(params.get(id)); 
             //check if valid
-            if(val > counter.max || val <= 0|| NaN(val) ){ //Nan = Not an Number
+            if(val > counter.max || val <= 0){
                 counter.current = 1;
             }
             else{
