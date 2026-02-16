@@ -6,6 +6,10 @@
 }
 body {
     font-family: "ElinaWeather";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 256px; 
 }
 
 /*--div---*/
@@ -26,7 +30,7 @@ div.btn{
     justify-content: center; 
     align-items: center; 
     flex-direction:column;
-    gap: 5px; 
+    gap: 16px; 
 }
 
 /*---img---*/
@@ -47,8 +51,8 @@ z-index: 10;
 }
 /*https://stackoverflow.com/questions/6488390/can-you-layer-pictures-on-top-of-each-other-on-a-webpage*/
 img.btn {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
 }
 
 /*---btn---*/
@@ -56,4 +60,8 @@ button.arr {
     background: transparent;  
     border: none;            
     outline: none;          
+}
+button#save{
+    font-size: 20px;
+    font-family: "ElinaWeather";
 }
