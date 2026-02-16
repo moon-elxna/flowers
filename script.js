@@ -1,37 +1,28 @@
-//counter
-    let counter_flower = 1;
-    let counter_flower_max = 5;
-    let counter_stem = 1;
-    let counter_stem_max = 5;
-    let counter_decor = 1;
-    let counter_decor_max = 3;
 
-function change_img(id, counter, max, direction){
-    
-    if(direction == "inc"){
-        counter = increase_counter(counter, max);
-    } 
-    else if(direction == "dec"){
-        counter = decrease_counter(counter, max);
-    }   
-    document.getElementById(id).src = "img/" + id + "/" + counter + ".PNG";
+const counters = {
+    flower: { current: 1, max: 5 },
+    stem: { current: 1, max: 5 },
+    decor: { current: 1, max: 3 }
 }
 
-function decrease_counter(counter, max){
-    if(counter == 1){
-        return max;
+function change_img(id, direction){
+    function decrease_counter(counter){
+        if(counter.current == 1){
+                counter.current = counter.max;
+            } else {
+                counter.current = counter.current - 1;
+            }
     }
-    else{
-        return counter - 1;
+    function increase_counter(counter){
+        if(counter.current == counter.max){
+                counter.current = 1;
+            } else {
+                counter.current = counter.current + 1;
+            }
     }
+    const counter = counters[id];
+    if(direction == "inc"){ increase_counter(counter);} 
+    else if(direction == "dec"){decrease_counter(counter);}   
+    console.log("img/" + id + "/" + counter + ".PNG");
+    document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
 }
-function increase_counter(counter, max){
-    if(counter == max){
-        return 1;
-    }
-    else{
-        return counter + 1;
-    }
-}
-butto
-console.log("test");
