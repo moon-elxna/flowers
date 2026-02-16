@@ -11,40 +11,25 @@
 <body>
     <div id="header">
         <h1>build ur flower</h1>
-        <hr>
     </div>
     <div id="content">
-        <div class="content" id= "btn">
-                <button type="button" class= "btn" onclick="change_img('flower', 'dec')">
-                    <img class="btn_arrow_icon" src="img/icon/left.PNG" alt="arrow left">
-                </button>
-                <button type="button" class= "btn" onclick="change_img('stem', 'dec')">
-                    <img class="btn_arrow_icon" src="img/icon/left.PNG" alt="arrow left">
-                </button>
-                 <button type="button" class= "btn" onclick="change_img('decor', 'dec')">
-                    <img class="btn_arrow_icon" src="img/icon/left.PNG" alt="arrow left">
-                </button>
+        <div class="btn">
+                <button onclick="change_img('flower','dec')"><img class="btn" src="img/icon/left.PNG" alt="arrow left"></button>
+                <button onclick="change_img('stem','dec')"><img class="btn" src="img/icon/left.PNG" alt="arrow left"></button>
+                <button onclick="change_img('decor','dec')"><img class="btn" src="img/icon/left.PNG" alt="arrow left"></button>
         </div>
-        <div class="content" id="builder">
-            <img id="decor" class="building" src="img/decor/1.PNG" alt="">
-            <img id="flower" class="building" src="img/flower/1.PNG" alt="">
-            <img id="stem" class="building" src="img/stem/1.PNG" alt="">
+        <div id="builder">
+            <img id="decor" class="building" src="img/decor/1.PNG" alt="decor elements">
+            <img id="flower" class="building" src="img/flower/1.PNG" alt="flower">
+            <img id="stem" class="building" src="img/stem/1.PNG" alt="stem">
         </div>
-        <div class="content" id="btn">
-
-                <button type="button" class= "btn" onclick="change_img('flower', 'inc')">
-                    <img class="btn_arrow_icon" src="img/icon/right.PNG" alt="arrow right">
-                </button>
-                <button type="button" class= "btn" onclick="change_img('stem', 'inc')">
-                    <img class="btn_arrow_icon" src="img/icon/right.PNG" alt="arrow right">
-                </button>
-                <button type="button" class= "btn" onclick="change_img('decor', 'inc')">
-                    <img class="btn_arrow_icon" src="img/icon/right.PNG" alt="arrow right">
-                </button>
+        <div class="btn">
+                <button onclick="change_img('flower', 'inc')"><img class="btn" src="img/icon/right.PNG" alt="arrow right"></button>
+                <button onclick="change_img('stem', 'inc')"><img class="btn" src="img/icon/right.PNG" alt="arrow right"></button>
+                <button onclick="change_img('decor', 'inc')"><img class="btn" src="img/icon/right.PNG" alt="arrow right"></button>
         </div>
     </div>
-    <button onclick="download_img()">save as image</button>
+    <button id="save" onclick="download_img()">Save ur flower <br> as an image !</button>
 </body>
 <script src="script.js"></script>
-
 </html>

@@ -9,7 +9,7 @@ div#builder{
     width: 250px;       
     height: 500px;     
 }
-img.btn_arrow_icon {
+img.btn {
     width: 32px;
     height: 32px;
 }
@@ -20,16 +20,17 @@ z-index: 20;
 #flower {
 z-index: 30;
 }
-button.btn {
+button {
     background: transparent;  
     border: none;            
     outline: none;          
 }
+button#save
 
 #stem {
 z-index: 10;
 }
-div#btn{
+div.btn{
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -44,4 +45,8 @@ div#content {
     flex-direction: row; 
     gap: 5px;
 }
+div#content > div {
+    
+}
+
 
