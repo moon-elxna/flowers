@@ -4,6 +4,7 @@ const counters = {
     stem: { current: 1, max: 5 },
     decor: { current: 1, max: 4 }
 }
+read_url();
 
 //functions
 function change_img(id, direction){
@@ -63,6 +64,7 @@ function share_url(){
     let text = "Check out my flower creation and build yours next!"
     //write the string to the clipboard
     navigator.clipboard.writeText(text + " " + url);
+    navigator.clipboard.writeText(url);
 }
 
 function read_url(){
