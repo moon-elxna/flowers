@@ -37,6 +37,12 @@ div#content {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+div#div_around_builder{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 div#builder{
     position: relative;
     width: 250px;       
@@ -93,13 +99,20 @@ button.tool:active {
     } 
 
     div#content {  
-       /* gap: 0px;
+        padding: 64px 16px;
+        gap: 0px;
         max-width: min-content;
-        padding: 64px 16px;*/
+    }
+    div#builder{
+        position: relative;
+        width: 150px;       
+        height: 300px;  
+        padding: 0px;
+        margin: 0px;
     }
 
     /*---img---*/
     img.building {
-        width: 150px;
+      width: 150px;
     }
 }
