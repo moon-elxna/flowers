@@ -38,12 +38,9 @@ div#content {
 }
 
 div#builder{
-  display: flex;
-  justify-content: center;
-}
-
-canvas{
-    width: 250px;
+    position: relative;
+    width: 250px;       
+    height: 500px;  
 }
 
 div.btn{
@@ -55,10 +52,19 @@ div.btn{
 }
 
 /*---img---*/
+img.building {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+}
 img.btn {
     width: 48px;
     height: auto;
 }
+img#decor { z-index: 20; }
+img#flower { z-index: 30; }
+img#stem { z-index: 10; }
 
 /*---btn---*/
 button {
@@ -87,13 +93,9 @@ button.tool:active {
     } 
 
     div#content {  
-        gap: 0px;
+       /* gap: 0px;
         max-width: min-content;
-        padding: 64px 16px;
-    }
-
-    canvas{
-        width: 200px;
+        padding: 64px 16px;*/
     }
 
     /*---img---*/

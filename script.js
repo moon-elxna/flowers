@@ -1,12 +1,9 @@
 //main
-const ctx = document.getElementById("canvas").getContext("2d");
-
 const counters = {
-    flower: { current: 1, max: 5, img: null },
-    stem: { current: 1, max: 5, img: null },
-    decor: { current: 1 , max: 4, img: null }
+    flower: { current: 1, max: 5},
+    stem: { current: 1, max: 5},
+    decor: { current: 1 , max: 4}
 }
-
 read_url();
 
 //functions
@@ -47,6 +44,20 @@ function share_url(){
 }
 
 function download_img(){
+    //neue canvas erstellen
+    const canvas = document.createElement("canvas");
+    canvas.width = 350;
+    canvas.height = 700;
+    // Zeichenwerzeug holen, ctx = context, 2d = 2d grafik
+    const ctx = canvas.getContext("2d");
+    //Bilder aus HTML holen
+    const flower_img = document.getElementById("flower");
+    const stem_img = document.getElementById("stem");
+    const decor_img = document.getElementById("decor");
+    //Bilder übereinader zeichen, 0,0 = oben-links Position
+    ctx.drawImage(stem_img,0,0);
+    ctx.drawImage(decor_img,0,0);
+    ctx.drawImage(flower_img,0,0);
     //download link erstellen
     const link = document.createElement("a"); 
     // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
@@ -55,13 +66,15 @@ function download_img(){
     link.download = "ur_flower.png"
     //download starten
     link.click();
-    alert("Downloaded as PNG!");
+    //alert("Downloaded as PNG!");
 }
 
 function read_url(){
-    //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
+   //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
     function get_params(id, params){
+        console.log("hi");
         const counter = counters[id];
+        flag = false;
         if (params.has(id)){
             let val = parseInt(params.get(id)); 
             //check if valid
@@ -70,43 +83,19 @@ function read_url(){
             }
             else{
                 counter.current = val
-            }     
+            }
+            document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
+            flag = true
         }
-        else {
+        else if(flag == false) {
             read_local_storage();
         }
     }
     //grab parameters from the url, URLSearchParams = helper object for query parameters, windows = browser window, location = current page url, search = url after "?" 
     const params = new URLSearchParams(window.location.search);
+    get_params("flower",params);
     get_params("stem", params);
     get_params("decor", params);
-    get_params("flower",params);
-    redraw_img();
-}
-
-async function redraw_img(){
-    function load_img(id){
-        const counter = counters[id];
-        return new Promise(resolve => { //starts the Promise, waits until the resolved to finish function
-            let img  = new Image();
-            img.src = "img/" + id + "/" + counter.current + ".PNG";
-            img.onload = () => {
-                counter.img = img;
-                resolve(); //returns, that Prommise is resolved ,"layer is finished"
-            };
-        });
-    }
-    function draw_img(img){
-        ctx.drawImage(img,0,0);
-    }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //await = waits until the fuction is finished, before excuting the next one
-    await load_img("stem");
-    await load_img("decor");
-    await load_img("flower");
-    draw_img(counters.stem.img);
-    draw_img(counters.decor.img);
-    draw_img(counters.flower.img);
     write_local_storage();
 }
 
@@ -131,6 +120,7 @@ function change_img(id, flag){
     } 
     else if(flag == false){
         decrease_counter(counter);
-    }
-    redraw_img(id);
+    }   
+    document.getElementById(id).src = "img/" + id + "/" + counter.current + ".PNG";
+    write_local_storage();
 }
