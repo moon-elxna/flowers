@@ -31,9 +31,8 @@ div#title{
     font-size: 36px
 }
 div#builder{
-    position: relative;
-    width: 250px;       
-    height: 500px;     
+  display: flex;
+  justify-content: center;
 }
 div.btn{
     display: flex;
@@ -44,17 +43,6 @@ div.btn{
 }
 
 /*---img---*/
-/*
-img.building {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 250px;
-}
-#decor { z-index: 20; }
-#flower { z-index: 30; }
-#stem { z-index: 10; }
-*/
 img.btn {
     width: 48px;
     height: auto;
@@ -85,24 +73,32 @@ canvas{
 @media(max-width: 700px){
     div#content {
     display: flex;
-    flex-direction: row; 
-    gap: 5px;
+    flex-direction: row;
+    justify-content: center; 
+    gap: 0px;
     border-radius: 4px;
     background-color:#fffafb;
     max-width: min-content;
     margin: auto;
-    padding: 16px 32px;
+    padding: 16px;
+    padding-bottom: 64px;
+    padding-top: 64px;
     }
     div#header{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 8px;
+    padding-bottom: 32px;
     } 
     div#builder{
     width: 150px;       ;     
     }
     img.building {
     width: 150px;
+    }
+    canvas{
+        width: 175px;
     }
 
 }
