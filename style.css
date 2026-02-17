@@ -1,16 +1,32 @@
-/*--div---*/
+/*---font---*/
 @font-face {
     font-family: pixellari;
     src: url("https://moon-elxna.github.io/build-ur-flower/font/Pixellari.ttf");
 }
+
+/*--div---*/
 body{
     background-color: #ffe9ef;
     font-family: "pixellari";;
     color: #000d18;
 }
+
+div#header{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div#title{
+    font-weight: bold;
+    font-size: 36px
+}
+
 div#content {
     display: flex;
     flex-direction: row; 
+    justify-content: center; 
     gap: 5px;
     border-radius: 4px;
     background-color:#fffafb;
@@ -20,20 +36,16 @@ div#content {
     transition: all 0.3s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-div#header{
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-div#title{
-    font-weight: bold;
-    font-size: 36px
-}
+
 div#builder{
   display: flex;
   justify-content: center;
 }
+
+canvas{
+    width: 250px;
+}
+
 div.btn{
     display: flex;
     justify-content: center; 
@@ -61,44 +73,30 @@ button.tool{
     background: #fffafb;
     padding: 6px;
 }
-
 button.tool:active {
     background-color: #ffe9ef;
 }
 
-canvas{
-    width: 250px;
-}
-
 @media(max-width: 700px){
-    div#content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; 
-    gap: 0px;
-    border-radius: 4px;
-    background-color:#fffafb;
-    max-width: min-content;
-    margin: auto;
-    padding: 16px;
-    padding-bottom: 64px;
-    padding-top: 64px;
-    }
+    /*--div---*/
     div#header{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 8px;
-    padding-bottom: 32px;
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 32px;
     } 
-    div#builder{
-    width: 150px;       ;     
-    }
-    img.building {
-    width: 150px;
-    }
-    canvas{
-        width: 175px;
+
+    div#content {  
+        gap: 0px;
+        max-width: min-content;
+        padding: 64px 16px;
     }
 
+    canvas{
+        width: 200px;
+    }
+
+    /*---img---*/
+    img.building {
+        width: 150px;
+    }
 }
