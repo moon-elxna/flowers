@@ -1,0 +1,103 @@
+/*---font---*/
+@font-face {
+    font-family: pixellari;
+    src: url("https://moon-elxna.github.io/build-ur-flower/font/Pixellari.ttf");
+}
+
+/*--div---*/
+body{
+    background-color: #ffe9ef;
+    font-family: "pixellari";;
+    color: #000d18;
+}
+
+div#header{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div#title{
+    font-weight: bold;
+    font-size: 36px
+}
+
+div#content {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center; 
+    gap: 5px;
+    border-radius: 4px;
+    background-color:#fffafb;
+    max-width: fit-content;
+    margin: auto;
+    padding: 16px 32px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+div#builder{
+  display: flex;
+  justify-content: center;
+}
+
+canvas{
+    width: 250px;
+}
+
+div.btn{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction:column;
+    gap: 16px; 
+}
+
+/*---img---*/
+img.btn {
+    width: 48px;
+    height: auto;
+}
+
+/*---btn---*/
+button {
+    font-family: "pixellari";
+    font-size: 24px;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+button.tool{
+    background: #fffafb;
+    padding: 6px;
+    margin: 4px;
+}
+button.tool:active {
+    background-color: #ffe9ef;
+}
+
+@media(max-width: 700px){
+    /*--div---*/
+    div#header{
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 32px;
+    } 
+
+    div#content {  
+        gap: 0px;
+        max-width: min-content;
+        padding: 64px 16px;
+    }
+
+    canvas{
+        width: 200px;
+    }
+
+    /*---img---*/
+    img.building {
+        width: 150px;
+    }
+}

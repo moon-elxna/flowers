@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="icon" href="img/blossom.png" type="image/png">
+    <title>build ur flower</title>
+</head>
+
+<body>
+    <div id="header">
+        <div id="title">BUILD UR FLOWER</div>
+        <div id="tool_btn">
+            <button type="button" class="tool" onclick="download_img()">SAVE</button>
+            <button type="button" class="tool" onclick="share_url()">SHARE</button>
+        </div>
+    </div>
+    <div id="content">
+        <div class="btn">
+                <button type="button" class="arr" onclick="change_img('flower',false)"><img class="btn" src="img/l_arr.PNG" alt="arrow"></button>
+                <button type="button" class="arr" onclick="change_img('stem', false)"><img class="btn" src="img/l_arr.PNG" alt="arrow"></button>
+                <button type="button" class="arr" onclick="change_img('decor', false)"><img class="btn" src="img/l_arr.PNG" alt="arrow"></button>
+        </div>
+        <div id="builder">
+            <canvas id="canvas" width="350" height="700"></canvas>
+        </div>
+        <div class="btn">
+                <button type="button" class="arr" onclick="change_img('flower', true)"><img class="btn" src="img/r_arr.PNG" alt="arrow"></button>
+                <button type="button" class="arr" onclick="change_img('stem', true)"><img class="btn" src="img/r_arr.PNG" alt="arrow"></button>
+                <button type="button" class="arr" onclick="change_img('decor', true)"><img class="btn" src="img/r_arr.PNG" alt="arrow"></button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
