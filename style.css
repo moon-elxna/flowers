@@ -116,3 +116,17 @@ button.tool:active {
       width: 150px;
     }
 }
+
+@media(max-width: 350px){
+    div#title{
+        font-weight: bold;
+        font-size: 30px
+    }
+
+    div#header{
+        padding-bottom: 16px;
+    } 
+    div#content {  
+        padding: 32px 8px;
+    }
+}
