@@ -44,35 +44,44 @@ function share_url(){
 }
 
 function download_img(){
-    //neue canvas erstellen
-    const canvas = document.createElement("canvas");
-    canvas.width = 350;
-    canvas.height = 700;
-    // Zeichenwerzeug holen, ctx = context, 2d = 2d grafik
-    const ctx = canvas.getContext("2d");
-    //Bilder aus HTML holen
-    const flower_img = document.getElementById("flower");
-    const stem_img = document.getElementById("stem");
-    const decor_img = document.getElementById("decor");
-    //Bilder übereinader zeichen, 0,0 = oben-links Position
-    ctx.drawImage(stem_img,0,0);
-    ctx.drawImage(decor_img,0,0);
-    ctx.drawImage(flower_img,0,0);
-    //download link erstellen
-    const link = document.createElement("a"); 
-    // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
-    link.href = canvas.toDataURL("image/png");
-    //Dateiname setzen, 
-    link.download = "ur_flower.png"
-    //download starten
-    link.click();
-    //alert("Downloaded as PNG!");
+    const img_name = new Image();
+    img_name.src = "img/name.png";
+    img_name.onload = () => {
+        //neue canvas erstellen
+        const canvas = document.createElement("canvas");
+        canvas.width = 350;
+        canvas.height = 700;
+        // Zeichenwerzeug holen, ctx = context, 2d = 2d grafik
+        const ctx = canvas.getContext("2d");
+        //add solid bg
+        ctx.fillStyle = "#fffafb";
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        //draw img
+        draw_img("stem");
+        draw_img("decor");
+        draw_img("flower");
+        ctx.drawImage(img_name, 0, 0);
+        //download link erstellen
+        const link = document.createElement("a"); 
+        // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
+        link.href = canvas.toDataURL("image/png");
+        //Dateiname setzen, 
+        link.download = "ur_flower.png"
+        //download starten
+        link.click();
+        //alert("Downloaded as PNG!"); 
+    };
+    function draw_img(id){
+            //Bilder aus HTML holen
+            const img = document.getElementById(id);
+            //Bilder übereinader zeichen, 0,0 = oben-links Position
+            ctx.drawImage(img, 0, 0);
+        }
 }
 
 function read_url(){
    //get params, params.get('') = grab the paramter from url, parseInt() = converts String to Integer
     function get_params(id, params){
-        console.log("hi");
         const counter = counters[id];
         flag = false;
         if (params.has(id)){
