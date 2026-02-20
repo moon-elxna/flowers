@@ -68,6 +68,7 @@ img.building {
 img.btn {
     width: 48px;
 }
+img#name {z-index: 40;}
 img#decor { z-index: 20; }
 img#flower { z-index: 30; }
 img#stem { z-index: 10; }

@@ -44,33 +44,30 @@ function share_url(){
 }
 
 function download_img(){
-    const img_name = new Image();
-    img_name.src = "assets/name.png";
-    img_name.onload = () => {
-        //neue canvas erstellen
-        const canvas = document.createElement("canvas");
-        canvas.width = 350;
-        canvas.height = 700;
-        // Zeichenwerzeug holen, ctx = context, 2d = 2d grafik
-        const ctx = canvas.getContext("2d");
-        //add solid bg
-        ctx.fillStyle = "#fffafb";
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-        //draw img
-        draw_img("stem");
-        draw_img("decor");
-        draw_img("flower");
-        ctx.drawImage(img_name, 0, 0);
-        //download link erstellen
-        const link = document.createElement("a"); 
-        // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
-        link.href = canvas.toDataURL("image/png");
-        //Dateiname setzen, 
-        link.download = "ur_flower.png"
-        //download starten
-        link.click();
-        //alert("Downloaded as PNG!"); 
-    };
+    //neue canvas erstellen
+    const canvas = document.createElement("canvas");
+    canvas.width = 350;
+    canvas.height = 700;
+    // Zeichenwerzeug holen, ctx = context, 2d = 2d grafik
+    const ctx = canvas.getContext("2d");
+    //add solid bg
+    ctx.fillStyle = "#fffafb";
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    //draw img
+    draw_img("stem");
+    draw_img("decor");
+    draw_img("flower");
+    draw_img("name");
+    //download link erstellen
+    const link = document.createElement("a"); 
+    // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
+    link.href = canvas.toDataURL("image/png");
+    //Dateiname setzen, 
+    link.download = "ur_flower.png"
+    //download starten
+    link.click();
+    //alert("Downloaded as PNG!"); 
+    
     function draw_img(id){
             //Bilder aus HTML holen
             const img = document.getElementById(id);
