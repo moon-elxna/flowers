@@ -53,11 +53,16 @@ function download_img(){
     //add solid bg
     ctx.fillStyle = "#fffafb";
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    //draw img
-    draw_img("stem");
-    draw_img("decor");
-    draw_img("flower");
-    draw_img("name");
+    //Bilder aus HTML holen
+    const img_stem = document.getElementById("stem");
+    const img_decor = document.getElementById("decor");
+    const img_flower = document.getElementById("flower");
+    const img_name = document.getElementById("name");
+    //Bilder übereinader zeichen, 0,0 = oben-links Position
+    ctx.drawImage(img_stem, 0, 0);
+    ctx.drawImage(img_decor, 0, 0);
+    ctx.drawImage(img_flower, 0, 0);
+    ctx.drawImage(img_name, 0, 0);
     //download link erstellen
     const link = document.createElement("a"); 
     // canvas zu png, toDataURL() = "Konvertiere Canvas zu PNG-Daten"
@@ -67,13 +72,6 @@ function download_img(){
     //download starten
     link.click();
     //alert("Downloaded as PNG!"); 
-    
-    function draw_img(id){
-            //Bilder aus HTML holen
-            const img = document.getElementById(id);
-            //Bilder übereinader zeichen, 0,0 = oben-links Position
-            ctx.drawImage(img, 0, 0);
-        }
 }
 
 function read_url(){
