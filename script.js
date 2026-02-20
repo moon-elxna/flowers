@@ -4,6 +4,7 @@ const counters = {
     stem: { current: 1, max: 5},
     decor: { current: 1 , max: 4}
 }
+const parts = ["stem", "decor","flower"]
 read_url();
 
 //functions
@@ -28,9 +29,9 @@ function write_local_storage(){
         const counter = counters[id];
         localStorage.setItem(id, counter.current);
     }
-    set_item("flower"); 
-    set_item("stem"); 
-    set_item("decor");
+    for(let i = 0; i < parts.length; i++){
+        set_item(parts[i])
+    }
 }
 
 function share_url(){
@@ -53,15 +54,14 @@ function download_img(){
     //add solid bg
     ctx.fillStyle = "#fffafb";
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    //
+    for(let i = 0; i < parts.length; i++){
+        const img = document.getElementById(parts[i]);
+        ctx.drawImage(img, 0, 0);
+    }
     //Bilder aus HTML holen
-    const img_stem = document.getElementById("stem");
-    const img_decor = document.getElementById("decor");
-    const img_flower = document.getElementById("flower");
     const img_name = document.getElementById("name");
     //Bilder übereinader zeichen, 0,0 = oben-links Position
-    ctx.drawImage(img_stem, 0, 0);
-    ctx.drawImage(img_decor, 0, 0);
-    ctx.drawImage(img_flower, 0, 0);
     ctx.drawImage(img_name, 0, 0);
     //download link erstellen
     const link = document.createElement("a"); 
@@ -97,9 +97,9 @@ function read_url(){
     }
     //grab parameters from the url, URLSearchParams = helper object for query parameters, windows = browser window, location = current page url, search = url after "?" 
     const params = new URLSearchParams(window.location.search);
-    get_params("flower",params);
-    get_params("stem", params);
-    get_params("decor", params);
+    for(let i = 0; i < parts.length; i++){
+         get_params(parts[i],params);
+    }
     write_local_storage();
 }
 
