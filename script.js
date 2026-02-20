@@ -2,8 +2,8 @@
 const parts = ["stem", "decor","flower"]
 const counters = {
     stem: { current: 1, max: 5},
-    decor: { current: 1, max: 5},
-    flower: { current: 1 , max: 4}
+    decor: { current: 1, max: 4},
+    flower: { current: 1 , max: 5}
 }
 read_url();
 
